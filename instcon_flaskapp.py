@@ -19,6 +19,11 @@ def index():
     # language is called Jinja.
     return render_template('index.html')
 
+@app.route('/lti/testlaunch', methods=['GET', 'POST'])
+def lti_test_launch():
+  # POST parameters
+  return render_template('lti_test_launch.html', post=request.form, get=request.args)
+
 @app.route('/hello_world')
 def hello_world():
     return 'Hello World!'
@@ -40,4 +45,4 @@ if __name__ == '__main__':
   dynamically detect the change on each startup. Reasonable default values of 
   hostname 0.0.0.0 and port 5000 are set as well.'''
 
-  app.run(host=os.getenv('IP','0.0.0.0'),port=int(os.getenv('PORT',5000)))    
+  app.run(host=os.getenv('IP','0.0.0.0'),port=int(os.getenv('PORT',5000)))
